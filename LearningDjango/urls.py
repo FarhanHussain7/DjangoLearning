@@ -1,14 +1,14 @@
 """
 URL configuration for LearningDjango project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The `urlpatterns` list routes URLs to O1_views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
 Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
+Function O1_views
+    1. Add an import:  from my_app import O1_views
+    2. Add a URL to urlpatterns:  path('', O1_views.home, name='home')
+Class-based O1_views
+    1. Add an import:  from other_app.O1_views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
@@ -16,15 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from LearningDjango import views 
+from LearningDjango import O1_views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('about/', views.aboutUs),
-    path('home/', views.Home),
-    path('dynamic/<int:courseId>', views.DynamicRoute),
-    path('dynamic/<str:courseName>', views.DynamicRoute),
-    path('dynamic/<slug:coursename>', views.DynamicRoute),
-    path('dynamicadata/<PassAnyValue>', views.DynamicRouteAnyData),
+    path('about/', O1_views.aboutUs),
+    path('home/', O1_views.Home),
+    path('dynamic/<int:courseId>', O1_views.DynamicRoute),
+    path('dynamic/<str:courseName>', O1_views.DynamicRoute),
+    path('dynamic/<slug:coursename>', O1_views.DynamicRoute),
+    path('dynamicadata/<PassAnyValue>', O1_views.DynamicRouteAnyData),
+    path('', O1_views.HomePage),
+    path('pass/', O1_views.PassData)
     
 ]
