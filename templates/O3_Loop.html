@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <style>
+        h1{
+            border: 2px solid black;
+            border-radius: 20px;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            font-size: 30px;
+        }
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            height: 70px;
+            width: auto;
+            border: 3px dotted lime;
+            border-radius: 10px;
+            color: white;
+            background-color: black;
+        }
+        p:hover{
+            background-color: aquamarine;
+            cursor: pointer;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pass Data From views to Html page </h1>
+    <p>{{description}}</p>
+    <ul>{{Process}}
+        <li>{{Step}}</li>
+    </ul>
+<!-- Pass List Data  -->
+    {% for n in Lang %}
+    <div>{{forloop.counter}} {{n}}</div>
+    {% endfor %}
+    
+    {% for n in Lang %}
+    <div>{{forloop.counter0}} {{n}}</div>
+    {% endfor %}
+    
+    {% for n in Lang %}
+    <div>{{forloop.revcounter}} {{n}}</div>
+    {% endfor %}
+    <!-- It will set first row true and else false -->
+    {% for n in Lang %}
+    <div>{{forloop.first}} {{n}}</div>
+    {% endfor %}
+    
+    {% for n in Lang %}
+    <div>{{forloop.last}} {{n}}</div>
+    {% endfor %}
+    
+    {% for n in Lang %}
+    <div>{{forloop.counter}} {{n}}</div>
+    {% endfor %}
+    
+
+    <!-- Pass Dictnary data  -->
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Name</th>
+            <th>Phone number</th>
+            <th>Address</th>
+        </tr>
+        {% for d in Student %}
+        <tr>
+            <td>{{d.name}}</td>
+            <td>{{d.phone}}</td>
+            <td>{{d.address}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    {% for n in Number %}
+        {% if n > 25 %}
+            <div>{{n}}</div>
+        {% endif %}
+    {% endfor %}
+
+</body>
+</html>

@@ -27,6 +27,7 @@ urlpatterns = [
     path('dynamic/<slug:coursename>', O1_views.DynamicRoute),
     path('dynamicadata/<PassAnyValue>', O1_views.DynamicRouteAnyData),
     path('', O1_views.HomePage),
-    path('pass/', O1_views.PassData)
+    path('pass/', O1_views.PassData),
+    path('dataInLoop/', O1_views.PassDataLoop)
     
 ]

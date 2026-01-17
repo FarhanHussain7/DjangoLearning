@@ -31,6 +31,14 @@ def PassDataLoop(request):
         'title':"Python Loop in Html",
         'description':'In Html using for loop for list , and dict data ',
         'Process':'use {{% Declare here your for Loop %}}',
-        'Step':['Python','Java ','Javascript']
+        'Lang':['Python','Java ','Javascript'],
+        'Student':[
+            {'name':"Farhan hussain", 'phone': 9688438382,'address':"delhi"},
+            {'name':"Imran ", 'phone': 9688438382,'address':"delhi"},
+            {'name':"Suraj ", 'phone': 9688438382,'address':"delhi"},
+            {'name':"Kabir ", 'phone': 9688438382,'address':"delhi"},
+            {'name':"Faeem ", 'phone': 9688438382,'address':"delhi"},
+        ],
+        'Number':[10,23,40,30,50]
     }
-    return render(request,'O2_PassingData.html',data)
+    return render(request,'O3_Loop.html',data)
