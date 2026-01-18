@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from LearningDjango import O1_views 
 
 urlpatterns = [
@@ -28,6 +30,9 @@ urlpatterns = [
     path('dynamicadata/<PassAnyValue>', O1_views.DynamicRouteAnyData),
     path('', O1_views.HomePage),
     path('pass/', O1_views.PassData),
-    path('dataInLoop/', O1_views.PassDataLoop)
-    
+    path('dataInLoop/', O1_views.PassDataLoop),
+    path('css_style/',O1_views.Webpage)
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

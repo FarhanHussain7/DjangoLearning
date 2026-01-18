@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Starter Website</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/O1_Website.css' %}">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">MySite</h1>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Welcome to My Website</h2>
+    <p>This is a simple starter template with HTML and CSS.</p>
+    <a href="#" class="btn">Get Started</a>
+  </section>
+
+  <!-- Content Section -->
+  <section class="content">
+    <div class="card">
+      <h3>Fast</h3>
+      <p>Optimized for speed and performance.</p>
+    </div>
+    <div class="card">
+      <h3>Responsive</h3>
+      <p>Looks great on any device.</p>
+    </div>
+    <div class="card">
+      <h3>Customizable</h3>
+      <p>Easy to tweak and extend.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 MySite. All rights reserved.</p>
+  </footer>
+</body>
+</html>

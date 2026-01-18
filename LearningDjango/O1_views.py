@@ -42,3 +42,6 @@ def PassDataLoop(request):
         'Number':[10,23,40,30,50]
     }
     return render(request,'O3_Loop.html',data)
+
+def Webpage(request):
+    return render(request,'O4_Css_Style.html')
