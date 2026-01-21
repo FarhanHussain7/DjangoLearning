@@ -45,3 +45,6 @@ def PassDataLoop(request):
 
 def Webpage(request):
     return render(request,'O4_Css_Style.html')
+
+def Website(request):
+    return render(request,'O5_base.html')

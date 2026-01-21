@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #00bcd4, #0097a7);
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.feature {
+  flex: 1;
+  margin: 0 15px;
+  text-align: center;
+}
+
+.feature h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+      <main>
+    <section class="hero">
+      <h1>Welcome to MyWebsite</h1>
+      <p>Your one-stop solution for modern web experiences.</p>
+      <a href="#" class="btn">Get Started</a>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h2>Fast</h2>
+        <p>Optimized performance for seamless browsing.</p>
+      </div>
+      <div class="feature">
+        <h2>Secure</h2>
+        <p>Top-notch security to protect your data.</p>
+      </div>
+      <div class="feature">
+        <h2>Responsive</h2>
+        <p>Looks great on any device, big or small.</p>
+      </div>
+    </section>
+  </main>
+
+    {% include "footer.html" %}
+</body>
+</html>

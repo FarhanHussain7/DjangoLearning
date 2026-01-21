@@ -31,7 +31,8 @@ urlpatterns = [
     path('', O1_views.HomePage),
     path('pass/', O1_views.PassData),
     path('dataInLoop/', O1_views.PassDataLoop),
-    path('css_style/',O1_views.Webpage)
+    path('css_style/',O1_views.Webpage),
+    path('fullweb/',O1_views.Website)
 ]
 
 if settings.DEBUG:
