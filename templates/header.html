@@ -51,6 +51,12 @@ header {
   text-decoration: underline;
 }
 
+.nav-links a.active {
+  color: #00bcd4;
+  border-bottom: 2px solid #00bcd4;
+  padding-bottom: 5px;
+}
+
 /* Button */
 .btn {
   background-color: #00bcd4;
@@ -72,10 +78,10 @@ header {
     <div class="logo">MyWebsite</div>
     <nav>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{% url 'aboutus' %}" {% if request.resolver_match.url_name == 'aboutus' %}class="active"{% endif %}>About</a></li>
+        <li><a href="{% url 'service' %}" {% if request.resolver_match.url_name == 'service' %}class="active"{% endif %}>Services</a></li>
+        <li><a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>Contact</a></li>
       </ul>
     </nav>
     <a href="#" class="btn">Sign Up</a>

@@ -48,3 +48,12 @@ def Webpage(request):
 
 def Website(request):
     return render(request,'O5_base.html')
+
+def Contact(request):
+    return render(request,'contact.html')
+
+def Service(request):
+    return render(request,'service.html')
+
+def About(request):
+    return render(request,'about.html')

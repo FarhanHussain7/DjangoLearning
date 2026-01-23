@@ -23,16 +23,19 @@ from LearningDjango import O1_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', O1_views.aboutUs),
-    path('home/', O1_views.Home),
+    path('home/', O1_views.Home, name=""),
     path('dynamic/<int:courseId>', O1_views.DynamicRoute),
     path('dynamic/<str:courseName>', O1_views.DynamicRoute),
     path('dynamic/<slug:coursename>', O1_views.DynamicRoute),
     path('dynamicadata/<PassAnyValue>', O1_views.DynamicRouteAnyData),
-    path('', O1_views.HomePage),
+    path('', O1_views.HomePage, name="home"),
     path('pass/', O1_views.PassData),
     path('dataInLoop/', O1_views.PassDataLoop),
     path('css_style/',O1_views.Webpage),
-    path('fullweb/',O1_views.Website)
+    path('fullweb/',O1_views.Website),
+    path('contact/', O1_views.Contact, name="contact"),
+    path('service/', O1_views.Service, name="service"),
+    path('about-us/', O1_views.About, name="aboutus"),
 ]
 
 if settings.DEBUG:
