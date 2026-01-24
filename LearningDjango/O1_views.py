@@ -50,10 +50,35 @@ def Website(request):
     return render(request,'O5_base.html')
 
 def Contact(request):
-    return render(request,'contact.html')
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+
+        # Print values in terminal
+        print("Name:", name)
+        print("Email:", email)
+        print("Subject:", subject)
+        print("Message:", message)
+
+        # You can also add logic here to save data or send email
+
+    return render(request, 'contact.html')
 
 def Service(request):
     return render(request,'service.html')
 
 def About(request):
     return render(request,'about.html')
+
+def Form(request):
+    try:
+        name=request.GET['username']
+        email=request.GET['email']
+        phone=request.GET['phone']
+        address=request.GET['address']
+        print(name,email,phone,address)
+    except:
+        pass
+    return render(request,'loginForm.html')

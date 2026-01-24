@@ -84,7 +84,7 @@ header {
         <li><a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>Contact</a></li>
       </ul>
     </nav>
-    <a href="#" class="btn">Sign Up</a>
+    <a href="{% url 'form' %}" class="btn">Sign Up</a>
   </header>
 </body>
 </html>
