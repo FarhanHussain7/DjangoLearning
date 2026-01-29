@@ -34,6 +34,7 @@ urlpatterns = [
     path('css_style/',O1_views.Webpage),
     path('fullweb/',O1_views.Website),
     path('contact/', O1_views.Contact, name="contact"),
+    path('thank-you/', O1_views.ThankYou, name="thank_you"),
     path('service/', O1_views.Service, name="service"),
     path('about-us/', O1_views.About, name="aboutus"),
     path('login/', O1_views.Form, name="form"),
