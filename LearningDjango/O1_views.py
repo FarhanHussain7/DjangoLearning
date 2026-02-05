@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
+from .forms import usersForm
 
 def aboutUs(request):
     return HttpResponse("Welcome to View page ")
@@ -51,6 +52,10 @@ def Website(request):
 
 def Contact(request):
     context = {}
+    fn = usersForm()
+    context={
+        'form':fn
+        }
     try:
         if request.method == "POST":
             name = request.POST.get("name")
@@ -76,16 +81,18 @@ def Contact(request):
                 
                 # Pass the result back to the template
                 context = {
+                    'form': fn,
                     'sum_result': sum_result,
                     'num1': num1,
                     'num2': num2
                 }
-                url = "/thank-you/?sum_result=" + str(sum_result)
-                return HttpResponseRedirect(url)
+                
             except ValueError:
                 context['error'] = "Please enter valid numbers"
                 
         # You can also add logic here to save data or send email
+            url = "/thank-you/?sum_result=" + str(sum_result)
+            return HttpResponseRedirect(url)
     except:
         pass
     return render(request, 'contact.html', context)
