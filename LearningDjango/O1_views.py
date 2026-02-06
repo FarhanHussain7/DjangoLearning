@@ -106,6 +106,51 @@ def Service(request):
 def About(request):
     return render(request,'about.html')
 
+def Calculator(request):
+    result = None
+    context = {}
+    
+    if request.method == "POST":
+        try:
+            num1 = float(request.POST.get("num1", 0))
+            num2 = float(request.POST.get("num2", 0))
+            operation = request.POST.get("operation", "add")
+            
+            print(f"Number 1: {num1}")
+            print(f"Number 2: {num2}")
+            print(f"Operation: {operation}")
+            
+            if operation == "add":
+                result = num1 + num2
+            elif operation == "subtract":
+                result = num1 - num2
+            elif operation == "multiply":
+                result = num1 * num2
+            elif operation == "divide":
+                if num2 != 0:
+                    result = num1 / num2
+                else:
+                    context['error'] = "Cannot divide by zero!"
+            elif operation == "power":
+                result = num1 ** num2
+            elif operation == "modulo":
+                if num2 != 0:
+                    result = num1 % num2
+                else:
+                    context['error'] = "Cannot modulo by zero!"
+            
+            if result is not None:
+                context['result'] = round(result, 4)
+                context['num1'] = num1
+                context['num2'] = num2
+                context['operation'] = operation
+                print(f"Result: {result}")
+                
+        except ValueError:
+            context['error'] = "Please enter valid numbers!"
+    
+    return render(request, 'O6_calculater.html', context)
+
 def Form(request):
     try:
         if request.method == "POST":
@@ -159,3 +204,24 @@ def Form(request):
     except Exception as e:
         print("Error:", str(e))
     return render(request,'loginForm.html')
+
+
+    def FormValidation(request):
+        context = {}
+        if request.method == "POST":
+            username = request.POST.get("username")
+            email = request.POST.get("email")
+            password = request.POST.get("password")
+            confirm_password = request.POST.get("confirm_password")
+            
+            # Basic validation
+            if not username or not email or not password or not confirm_password:
+                context['error'] = "All fields are required!"
+            elif password != confirm_password:
+                context['error'] = "Passwords do not match!"
+            else:
+                # If validation passes, you can save data or redirect
+                url = "/thank-you/?name=" + username
+                return HttpResponseRedirect(url)
+        
+        return render(request, 'O8_Form_validation.html', context)

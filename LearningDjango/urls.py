@@ -38,6 +38,7 @@ urlpatterns = [
     path('service/', O1_views.Service, name="service"),
     path('about-us/', O1_views.About, name="aboutus"),
     path('login/', O1_views.Form, name="form"),
+    path('calculator/', O1_views.Calculator, name="calculator"),
 ]
 
 if settings.DEBUG:
