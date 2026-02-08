@@ -15,13 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from LearningDjango import O1_views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('services/', include('service.url')),
     path('about/', O1_views.aboutUs),
     path('home/', O1_views.Home, name=""),
     path('dynamic/<int:courseId>', O1_views.DynamicRoute),
@@ -39,6 +40,7 @@ urlpatterns = [
     path('about-us/', O1_views.About, name="aboutus"),
     path('login/', O1_views.Form, name="form"),
     path('calculator/', O1_views.Calculator, name="calculator"),
+    
 ]
 
 if settings.DEBUG:
