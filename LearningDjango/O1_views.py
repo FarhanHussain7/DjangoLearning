@@ -1,5 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import usersForm
+from service.models import Service
+
 
 def aboutUs(request):
     return HttpResponse("Welcome to View page ")
@@ -15,6 +17,8 @@ def DynamicRouteAnyData(request, courseId):
 
 # 
 from django.shortcuts import render
+
+
 def HomePage(request):
     return render(request,'O1_index.html')
 

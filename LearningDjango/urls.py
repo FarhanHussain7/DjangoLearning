@@ -40,6 +40,8 @@ urlpatterns = [
     path('about-us/', O1_views.About, name="aboutus"),
     path('login/', O1_views.Form, name="form"),
     path('calculator/', O1_views.Calculator, name="calculator"),
+    # path('validation/', O1_views.FormValidation, name="validation"),
+    
     
 ]
 
