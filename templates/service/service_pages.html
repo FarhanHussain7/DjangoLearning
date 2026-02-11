@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Pages</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .page-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .page-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        .page-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        .page-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .back-btn {
+            background: #6c757d;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-btn:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container">
+        <header>
+            <h1>🛠️ Service Pages</h1>
+            <p>Explore all service-related pages and functionality</p>
+        </header>
+
+        <div class="pages-grid">
+            <div class="page-card">
+                <h2>📋 Service List</h2>
+                <p>View all available services in a clean, organized list format. Browse through different service offerings with their details and pricing information.</p>
+                <a href="/services/" class="btn">View Service List</a>
+            </div>
+
+            <div class="page-card">
+                <h2>➕ Create Service</h2>
+                <p>Add new services to the system through an intuitive form. Input service details including name, description, and pricing information.</p>
+                <a href="/services/create/" class="btn">Create New Service</a>
+            </div>
+
+            <div class="page-card">
+                <h2>🔍 Service Management</h2>
+                <p>Complete service management system with CRUD operations. Create, read, update, and delete services as needed.</p>
+                <a href="/services/" class="btn">Manage Services</a>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="/" class="btn back-btn">🏠 Back to Home</a>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

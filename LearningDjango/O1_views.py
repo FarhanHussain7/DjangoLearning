@@ -3,26 +3,56 @@ from .forms import usersForm
 from service.models import Service
 
 
+# Display a simple welcome message for the About Us page
 def aboutUs(request):
+    # Return a basic HTTP response with a welcome message
     return HttpResponse("Welcome to View page ")
 
+# Display a simple HTML response for the Home page
 def Home(request):
+    # Return a basic HTTP response with an HTML header
     return HttpResponse("<h1>Home page values are here </h1>")
 
+# Handle dynamic URL routing with integer course ID parameter
 def DynamicRoute(request, courseId):
+    # Return the course ID as an HTTP response
     return HttpResponse(courseId)
 
+# Handle dynamic URL routing with any type of data parameter
 def DynamicRouteAnyData(request, courseId):
+    # Return the course ID as an HTTP response
     return HttpResponse(courseId)
 
 # 
 from django.shortcuts import render
 
 
+# Render the main home page with navigation to all Django learning pages
 def HomePage(request):
+    """
+    This function renders the main home page with navigation to all Django learning pages.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered HTML response.
+    """
+    # Use the render function to render the O1_index.html template
     return render(request,'O1_index.html')
 
+# Demonstrate passing data from view to template with context dictionary
 def PassData(request):
+    """
+    This function demonstrates passing data from the view to the template using a context dictionary.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered HTML response with passed data.
+    """
+    # Create a dictionary with sample data to pass to template
     data={
         'title':"Pass Data view to Html",
         'description':'It will pass data here to html page help to see data from server to browser',
@@ -31,7 +61,18 @@ def PassData(request):
     }
     return render(request,'O2_PassingData.html',data)
 
+# Demonstrate using Django template loops with lists and dictionaries
 def PassDataLoop(request):
+    """
+    This function demonstrates using Django template loops with lists and dictionaries.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered HTML response with looped data.
+    """
+    # Create sample data including lists and dictionaries to demonstrate loop functionality
     data={
         'title':"Python Loop in Html",
         'description':'In Html using for loop for list , and dict data ',
@@ -48,13 +89,46 @@ def PassDataLoop(request):
     }
     return render(request,'O3_Loop.html',data)
 
+# Display CSS styling demonstration page
 def Webpage(request):
+    """
+    This function displays a CSS styling demonstration page.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered HTML response with CSS styling.
+    """
+    # Render the CSS styling demonstration template
     return render(request,'O4_Css_Style.html')
 
+# Display base template or website layout demonstration
 def Website(request):
+    """
+    This function displays a base template or website layout demonstration.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered HTML response with base template.
+    """
+    # Render the base template or website layout demonstration
     return render(request,'O5_base.html')
 
+# Handle contact form submission and display contact page
 def Contact(request):
+    """
+    This function handles contact form submission and displays the contact page.
+    It processes form data and performs basic calculations.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered contact page with form or success redirect.
+    """
     context = {}
     fn = usersForm()
     context={
@@ -99,18 +173,59 @@ def Contact(request):
             return HttpResponseRedirect(url)
     except:
         pass
-    return render(request, 'contact.html', context)
+    return render(request, 'pages/contact.html', context)
 
+# Display thank you page after successful form submission
 def ThankYou(request):
-    return render(request, 'thank_you.html')
+    """
+    This function displays a thank you page after successful form submission.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered thank you page.
+    """
+    return render(request, 'pages/thank_you.html')
 
+# Display service information page
 def Service(request):
-    return render(request,'service.html')
+    """
+    This function displays the service information page.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered service page.
+    """
+    return render(request,'pages/service.html')
 
+# Display about us page with company information
 def About(request):
-    return render(request,'about.html')
+    """
+    This function displays the about us page with company information.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered about page.
+    """
+    return render(request,'pages/about.html')
 
+# Perform mathematical calculations with basic operations
 def Calculator(request):
+    """
+    This function performs mathematical calculations with basic operations.
+    Supports add, subtract, multiply, divide, power, and modulo operations.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered calculator page with results.
+    """
     result = None
     context = {}
     
@@ -155,7 +270,18 @@ def Calculator(request):
     
     return render(request, 'O6_calculater.html', context)
 
+# Handle comprehensive login form with multiple input fields
 def Form(request):
+    """
+    This function handles a comprehensive login form with multiple input fields.
+    It processes various user data and redirects to thank you page.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered login form page or success redirect.
+    """
     try:
         if request.method == "POST":
             # Get all form input values
@@ -207,25 +333,50 @@ def Form(request):
             return HttpResponseRedirect(url)
     except Exception as e:
         print("Error:", str(e))
-    return render(request,'loginForm.html')
+    return render(request,'pages/loginForm.html')
 
-
-    def FormValidation(request):
-        context = {}
-        if request.method == "POST":
-            username = request.POST.get("username")
-            email = request.POST.get("email")
-            password = request.POST.get("password")
-            confirm_password = request.POST.get("confirm_password")
-            
-            # Basic validation
-            if not username or not email or not password or not confirm_password:
-                context['error'] = "All fields are required!"
-            elif password != confirm_password:
-                context['error'] = "Passwords do not match!"
-            else:
-                # If validation passes, you can save data or redirect
-                url = "/thank-you/?name=" + username
-                return HttpResponseRedirect(url)
+# Validate user input with basic form validation rules
+def FormValidation(request):
+    """
+    This function validates user input with basic form validation rules.
+    Checks for required fields and password confirmation.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered validation form or success redirect.
+    """
+    context = {}
+    if request.method == "POST":
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        confirm_password = request.POST.get("confirm_password")
         
-        return render(request, 'O8_Form_validation.html', context)
+        # Basic validation
+        if not username or not email or not password or not confirm_password:
+            context['error'] = "All fields are required!"
+        elif password != confirm_password:
+            context['error'] = "Passwords do not match!"
+        else:
+            # If validation passes, you can save data or redirect
+            url = "/thank-you/?name=" + username
+            return HttpResponseRedirect(url)
+    
+    # Render the validation form with the context
+    return render(request, 'O8_Form_validation.html', context)
+
+# Display overview page for all service-related functionality
+def ServicePages(request):
+    """
+    This function displays an overview page for all service-related functionality.
+    Provides navigation to service list, create, and detail pages.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered service pages overview.
+    """
+    return render(request, 'service/service_pages.html')
