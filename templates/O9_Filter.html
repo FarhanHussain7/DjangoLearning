@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Template Filters Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .filter-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .filter-section h2 {
+            color: #555;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .filter-example {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-left: 4px solid #007bff;
+        }
+        .original {
+            font-weight: bold;
+            color: #333;
+        }
+        .filtered {
+            color: #007bff;
+            font-family: monospace;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .price {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .date {
+            color: #6c757d;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Django Template Filters Examples</h1>
+        
+        <!-- String Filters -->
+        <div class="filter-section">
+            <h2>📝 String Filters</h2>
+            <div class="filter-example">
+                <span class="original">Original: "{{ my_string }}"</span><br>
+                <span class="filtered">Uppercase: {{ my_string|upper }}</span><br>
+                <span class="filtered">Lowercase: {{ my_string|lower }}</span><br>
+                <span class="filtered">Title Case: {{ my_string|title }}</span><br>
+                <span class="filtered">Truncate (15 chars): {{ my_string|truncatechars:15 }}</span><br>
+                <span class="filtered">Truncate words (3 words): {{ my_string|truncatewords:3 }}</span><br>
+                <span class="filtered">Length: {{ my_string|length }}</span><br>
+                <span class="filtered">Word count: {{ my_string|wordcount }}</span>
+            </div>
+        </div>
+
+        <!-- Number Filters -->
+        <div class="filter-section">
+            <h2>🔢 Number Filters</h2>
+            <div class="filter-example">
+                <span class="original">Original number: {{ my_number }}</span><br>
+                <span class="filtered">File size format: {{ my_number|filesizeformat }}</span><br>
+                <span class="original">Original price: {{ price }}</span><br>
+                <span class="filtered">Float format (2 decimals): {{ price|floatformat:2 }}</span><br>
+                <span class="original">Original decimal: {{ decimal_number }}</span><br>
+                <span class="filtered">Float format: {{ decimal_number|floatformat }}</span>
+            </div>
+        </div>
+
+        <!-- Date Filters -->
+        <div class="filter-section">
+            <h2>📅 Date & Time Filters</h2>
+            <div class="filter-example">
+                <span class="original">Original date: {{ current_date }}</span><br>
+                <span class="filtered">Date format (Y-m-d): {{ current_date|date:"Y-m-d" }}</span><br>
+                <span class="filtered">Date format (F j, Y): {{ current_date|date:"F j, Y" }}</span><br>
+                <span class="filtered">Date format (l, F jS, Y): {{ current_date|date:"l, F jS, Y" }}</span><br>
+                <span class="filtered">Time format (H:i:s): {{ current_date|date:"H:i:s" }}</span><br>
+                <span class="filtered">Time since: {{ current_date|timesince }}</span>
+            </div>
+        </div>
+
+        <!-- List Filters -->
+        <div class="filter-section">
+            <h2>📋 List Filters</h2>
+            <div class="filter-example">
+                <span class="original">Original list: {{ my_list|join:", " }}</span><br>
+                <span class="filtered">First item: {{ my_list|first }}</span><br>
+                <span class="filtered">Last item: {{ my_list|last }}</span><br>
+                <span class="filtered">Length: {{ my_list|length }}</span><br>
+                <span class="filtered">Join with " | ": {{ my_list|join:" | " }}</span><br>
+                <span class="filtered">Slice (first 3): {{ my_list|slice:":3"|join:", " }}</span>
+            </div>
+        </div>
+
+        <!-- Dictionary Filters -->
+        <div class="filter-section">
+            <h2>🗂️ Dictionary Filters</h2>
+            <div class="filter-example">
+                <span class="original">Original dict keys: {{ my_dict.keys|join:", " }}</span><br>
+                <span class="filtered">Get 'name': {{ my_dict.name }}</span><br>
+                <span class="filtered">Get 'age': {{ my_dict.age }}</span><br>
+                <span class="filtered">Get 'city': {{ my_dict.city }}</span>
+            </div>
+        </div>
+
+        <!-- Boolean and Default Filters -->
+        <div class="filter-section">
+            <h2>✅ Boolean & Default Filters</h2>
+            <div class="filter-example">
+                <span class="original">is_active (True): {{ is_active }}</span><br>
+                <span class="filtered">Yes/No: {{ is_active|yesno:"Yes,No" }}</span><br>
+                <span class="original">empty_value (None): {{ empty_value }}</span><br>
+                <span class="filtered">Default: {{ empty_value|default:"No value provided" }}</span><br>
+                <span class="filtered">Default if empty: {{ empty_value|default_if_none:"This is None" }}</span>
+            </div>
+        </div>
+
+        <!-- Custom Data Table with Filters -->
+        <div class="filter-section">
+            <h2>📊 Products Table with Filters</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Available</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.name|title }}</td>
+                        <td>{{ product.category|upper }}</td>
+                        <td class="price">${{ product.price|floatformat:2 }}</td>
+                        <td>{{ product.stock }}</td>
+                        <td>{{ product.in_stock|yesno:"✅ Available,❌ Out of Stock" }}</td>
+                        <td class="date">{{ product.created|date:"M d, Y" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Safe and Escape Filters -->
+        <div class="filter-section">
+            <h2>🔒 Safe & Escape Filters</h2>
+            <div class="filter-example">
+                <span class="original">HTML string: "{{ html_string }}"</span><br>
+                <span class="filtered">Escaped: {{ html_string }}</span><br>
+                <span class="filtered">Safe (rendered as HTML): {{ html_string|safe }}</span>
+            </div>
+        </div>
+
+        <a href="/" class="back-link">🏠 Back to Home</a>
+    </div>
+</body>
+</html>

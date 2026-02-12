@@ -367,6 +367,112 @@ def FormValidation(request):
     # Render the validation form with the context
     return render(request, 'O8_Form_validation.html', context)
 
+# Display comprehensive Django template filters examples with various data types
+def FilterExample(request):
+    """
+    This function displays comprehensive Django template filters examples.
+    Shows various filter types: string, number, date, list, dictionary, boolean, and safe filters.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered filter examples page with sample data.
+    """
+    from datetime import datetime, timedelta
+    
+    # String data for string filters
+    my_string = "hello world this is a django filter example"
+    
+    # Number data for number filters
+    my_number = 1048576  # 1 MB in bytes
+    price = 29.99
+    decimal_number = 3.14159
+    
+    # Date data for date filters
+    current_date = datetime.now()
+    past_date = datetime.now() - timedelta(days=5)
+    
+    # List data for list filters
+    my_list = ['apple', 'banana', 'cherry', 'date', 'elderberry']
+    
+    # Dictionary data for dictionary filters
+    my_dict = {
+        'name': 'John Doe',
+        'age': 30,
+        'city': 'New York',
+        'email': 'john@example.com'
+    }
+    
+    # Boolean and default data
+    is_active = True
+    empty_value = None
+    
+    # HTML string for safe/escape filters
+    html_string = "<strong>Bold Text</strong> and <em>italic text</em>"
+    
+    # Products data for table demonstration
+    products = [
+        {
+            'name': 'laptop computer',
+            'category': 'electronics',
+            'price': 999.99,
+            'stock': 15,
+            'in_stock': True,
+            'created': datetime.now() - timedelta(days=30)
+        },
+        {
+            'name': 'wireless mouse',
+            'category': 'electronics',
+            'price': 25.50,
+            'stock': 0,
+            'in_stock': False,
+            'created': datetime.now() - timedelta(days=20)
+        },
+        {
+            'name': 'office chair',
+            'category': 'furniture',
+            'price': 199.99,
+            'stock': 8,
+            'in_stock': True,
+            'created': datetime.now() - timedelta(days=15)
+        },
+        {
+            'name': 'desk lamp',
+            'category': 'furniture',
+            'price': 45.75,
+            'stock': 12,
+            'in_stock': True,
+            'created': datetime.now() - timedelta(days=10)
+        },
+        {
+            'name': 'notebook set',
+            'category': 'stationery',
+            'price': 12.99,
+            'stock': 0,
+            'in_stock': False,
+            'created': datetime.now() - timedelta(days=5)
+        }
+    ]
+    
+    # Context dictionary with all data
+    context = {
+        'my_string': my_string,
+        'my_number': my_number,
+        'price': price,
+        'decimal_number': decimal_number,
+        'current_date': current_date,
+        'past_date': past_date,
+        'my_list': my_list,
+        'my_dict': my_dict,
+        'is_active': is_active,
+        'empty_value': empty_value,
+        'html_string': html_string,
+        'products': products
+    }
+    
+    return render(request, 'O9_Filter.html', context)
+
 # Display overview page for all service-related functionality
 def ServicePages(request):
     """
