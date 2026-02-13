@@ -1,7 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import usersForm
-from service.models import Service
-
+from service.models import Service, Contact, News
 
 # Display a simple welcome message for the About Us page
 def aboutUs(request):
@@ -38,8 +37,12 @@ def HomePage(request):
     Returns:
     HttpResponse: The rendered HTML response.
     """
+    NewsData = News.objects.all()
+    context = {
+        'NewsData': NewsData
+    }
     # Use the render function to render the O1_index.html template
-    return render(request,'O1_index.html')
+    return render(request,'O1_index.html',context)
 
 # Demonstrate passing data from view to template with context dictionary
 def PassData(request):
@@ -486,3 +489,19 @@ def ServicePages(request):
     HttpResponse: The rendered service pages overview.
     """
     return render(request, 'service/service_pages.html')
+
+def NewsList(request, news_id):
+    """
+    This function displays an overview page for all news-related functionality.
+    Provides navigation to news list, create, and detail pages.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.    
+        Returns:
+    HttpResponse: The rendered news pages overview.
+    """
+    NewsData = News.objects.filter(id=news_id)
+    context = {
+        'NewsData': NewsData
+    }
+    return render(request, 'service/news_details.html', context)

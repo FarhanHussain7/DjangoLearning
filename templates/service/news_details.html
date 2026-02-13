@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Details</title>
+</head>
+<style>
+.news-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.news-item {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.news-item h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937; /* dark gray */
+  margin-bottom: 10px;
+}
+
+.news-item p {
+  font-size: 1rem;
+  color: #4b5563; /* medium gray */
+  line-height: 1.5;
+}
+</style>
+
+<body>
+    {% include 'header.html' %}
+
+    <div class="container">
+        <h1>News Details</h1>
+        <div class="news-container">
+        {% for news in NewsData %}
+        <div class="news-item">
+         <h2>{{ news.title }}</h2>
+        <p>{{ news.description|safe }}</p>
+    </div>
+  {% endfor %}
+</div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

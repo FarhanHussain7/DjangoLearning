@@ -119,10 +119,19 @@
             border-top: 1px solid rgba(255, 255, 255, 0.3);
             font-size: 14px;
         }
+        /* Additional styling for the news marquee */
     </style>
 </head>
 <body>
     {% include 'header.html' %}
+    <marquee behavior="scroll" direction="right" style="color: white; margin-bottom: 20px; font-size: 18px;">
+            Welcome to the Django Learning Hub! Explore the pages below to master Django development. 🚀
+    </marquee>
+    <marquee onmouseover="this.stop()" onmouseout="this.start()" direction="left" style="color: white; margin-bottom: 20px; font-size: 18px;">
+        {% for service in NewsData %}
+            {{ service.title }} - {{ service.description }} &nbsp;&nbsp;&nbsp;
+        {% endfor %}
+    </marquee>
     <div class="container">
         <header>
             <h1>🚀 Django Learning Hub</h1>
