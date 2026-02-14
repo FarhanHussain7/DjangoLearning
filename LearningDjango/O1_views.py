@@ -500,7 +500,7 @@ def NewsList(request, news_id):
         Returns:
     HttpResponse: The rendered news pages overview.
     """
-    NewsData = News.objects.filter(id=news_id)
+    NewsData = News.objects.get(id=news_id)
     context = {
         'NewsData': NewsData
     }

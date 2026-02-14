@@ -15,7 +15,13 @@
 <body>
     <h1>Our Services</h1>
     <a href="{% url 'service_create' %}" class="btn">Add New Service</a>
-    
+
+    <!-- Search form -->
+    <form method="get" action="">
+        <input type="text" name="servicename" placeholder="Search services..." value="{{ request.GET.servicename }}">
+        <button type="submit">Search</button>
+    </form>
+
     {% for service in services %}
         <div class="service">
             <h3>{{ service.name }}</h3>

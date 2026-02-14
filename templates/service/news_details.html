@@ -46,12 +46,10 @@
     <div class="container">
         <h1>News Details</h1>
         <div class="news-container">
-        {% for news in NewsData %}
         <div class="news-item">
-         <h2>{{ news.title }}</h2>
-        <p>{{ news.description|safe }}</p>
+         <h2>{{ NewsData.title }}</h2>
+        <p>{{ NewsData.description|safe }}</p>
     </div>
-  {% endfor %}
 </div>
 
     {% include 'footer.html' %}

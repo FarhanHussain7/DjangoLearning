@@ -5,6 +5,9 @@ from .forms import ServiceForm
 
 def service_list(request):
     services = Service.objects.all()
+    query = request.GET.get('servicename')
+    if query:
+        services = Service.objects.filter(name__icontains=query)
     return render(request, 'service/service_list.html', {'services': services})
 
 def service_detail(request, pk):

@@ -128,8 +128,8 @@
             Welcome to the Django Learning Hub! Explore the pages below to master Django development. 🚀
     </marquee>
     <marquee onmouseover="this.stop()" onmouseout="this.start()" direction="left" style="color: white; margin-bottom: 20px; font-size: 18px;">
-        {% for service in NewsData %}
-            {{ service.title }} - {{ service.description }} &nbsp;&nbsp;&nbsp;
+        {% for news in NewsData %}
+          <a href="/news/{{ news.id }}">{{ news.title }}</a> - {{ news.description }} &nbsp;&nbsp;&nbsp;
         {% endfor %}
     </marquee>
     <div class="container">
