@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.service_list, name='service_list'),
     path('create/', views.service_create, name='service_create'),
     path('<int:pk>/', views.service_detail, name='service_detail'),
+    path('contact/', views.service_contact, name='service_contact'),
 ]

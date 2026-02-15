@@ -120,16 +120,59 @@
             font-size: 14px;
         }
         /* Additional styling for the news marquee */
+        /* Marquee styling */
+marquee {
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+/* Anchor tag styling inside marquee */
+marquee a {
+  color: #ffdd57;
+  text-decoration: none;
+  margin: 0 15px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect with underline animation */
+marquee a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ffdd57;
+  transition: width 0.3s ease;
+}
+
+marquee a:hover {
+  color: #ffd700;
+  transform: scale(1.1);
+}
+
+marquee a:hover::after {
+  width: 100%;
+}
     </style>
 </head>
 <body>
     {% include 'header.html' %}
     <marquee behavior="scroll" direction="right" style="color: white; margin-bottom: 20px; font-size: 18px;">
-            Welcome to the Django Learning Hub! Explore the pages below to master Django development. 🚀
+           🚀🚀🚀🚀🚀🚀 Welcome to the Django Learning Hub! Explore the pages below to master Django development. 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
     </marquee>
     <marquee onmouseover="this.stop()" onmouseout="this.start()" direction="left" style="color: white; margin-bottom: 20px; font-size: 18px;">
         {% for news in NewsData %}
-          <a href="/news/{{ news.id }}">{{ news.title }}</a> - {{ news.description }} &nbsp;&nbsp;&nbsp;
+          <!-- <a href="/news/{{ news.id }}">{{ news.title }}</a> - {{ news.description }} &nbsp;&nbsp;&nbsp; -->
+          <a href="/news/{{ news.slug }}">{{ news.title }}</a> &nbsp;&nbsp;&nbsp;
         {% endfor %}
     </marquee>
     <div class="container">

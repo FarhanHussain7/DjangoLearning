@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Service
+from .models import Service, News, Contact
 from .forms import ServiceForm
+from django.core.paginator import Paginator
+
 
 def service_list(request):
     services = Service.objects.all()
@@ -23,3 +25,14 @@ def service_create(request):
     else:
         form = ServiceForm()
     return render(request, 'service/service_form.html', {'form': form})
+
+def service_contact(request):
+    contactData = Contact.objects.all()
+    paginate=Paginator(contactData, 3)
+    page_number=request.GET.get('page')
+    contactData=paginate.get_page(page_number)
+    context = {
+        'contactData': contactData,
+        # 'paginate': paginate
+    }   
+    return render(request, 'service/service_contact.html', context)

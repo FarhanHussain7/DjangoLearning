@@ -43,7 +43,7 @@ urlpatterns = [
     path('validation/', O1_views.FormValidation, name="validation"),
     path('service-pages/', O1_views.ServicePages, name="service_pages"),
     path('filters/', O1_views.FilterExample, name="filters"),
-    path('news/<news_id>', O1_views.NewsList, name="news_list"),
+    path('news/<slug:slug>/', O1_views.NewsList, name="news_list"),
 ]
 
 if settings.DEBUG:

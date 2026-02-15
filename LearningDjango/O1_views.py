@@ -490,7 +490,7 @@ def ServicePages(request):
     """
     return render(request, 'service/service_pages.html')
 
-def NewsList(request, news_id):
+def NewsList(request, slug):
     """
     This function displays an overview page for all news-related functionality.
     Provides navigation to news list, create, and detail pages.
@@ -500,7 +500,7 @@ def NewsList(request, news_id):
         Returns:
     HttpResponse: The rendered news pages overview.
     """
-    NewsData = News.objects.get(id=news_id)
+    NewsData = News.objects.get(slug=slug)
     context = {
         'NewsData': NewsData
     }

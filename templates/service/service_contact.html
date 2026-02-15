@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .service { 
+            border: 1px solid #ddd; 
+            padding: 20px; 
+            margin: 15px auto; 
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            max-width: 600px;
+        }
+        .service:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+        .service h3 { 
+            margin: 0 0 10px 0; 
+            color: #007cba;
+        }
+        .service p { 
+            margin: 5px 0; 
+            color: #555;
+        }
+        .btn { 
+            background: #007cba; 
+            color: white; 
+            padding: 10px 15px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #005f8a;
+        }
+
+        /* Pagination styling */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            list-style: none;
+            padding: 0;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination a {
+            display: block;
+            padding: 8px 12px;
+            background: #007cba;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        .pagination a:hover {
+            background: #005f8a;
+        }
+        .pagination .active a {
+            background: #333;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Contacts</h1>
+    <!-- <a href="{% url 'service_create' %}" class="btn">Add New Contact</a> -->
+
+    <!-- Search form -->
+    <!-- <form method="get" action="">
+        <input type="text" name="servicename" placeholder="Search services..." value="{{ request.GET.servicename }}">
+        <button type="submit">Search</button>
+    </form> -->
+
+    {% for contact in contactData %}
+        <div class="service">
+            <h3>{{ contact.name }}</h3>
+            <p>{{ contact.email }}</p>
+            <p><strong>Phone: {{ contact.phone }}</strong></p>
+            <!-- <a href="{% url 'service_detail' contact.pk %}" class="btn">View Details</a> -->
+        </div>
+    {% empty %}
+        <p>No contacts available.</p>
+    {% endfor %}
+
+    <!-- Pagination template -->
+    {% if contactData.has_other_pages %}
+        <ul class="pagination">
+            {% if contactData.has_previous %}
+                <li><a href="?page={{ contactData.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            {% for num in contactData.paginator.page_range %}
+                {% if contactData.number == num %}
+                    <li class="active"><a href="#">{{ num }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if contactData.has_next %}
+                <li><a href="?page={{ contactData.next_page_number }}">Next</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+</body>
+</html>

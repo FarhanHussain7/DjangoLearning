@@ -1,6 +1,8 @@
 from django.db import models
 # tinymce is a rich text editor for Django, and HTMLField is a field that allows you to store HTML content in the database. It provides a user-friendly interface for editing and formatting text, making it ideal for fields like descriptions or content that may require rich formatting.
 from tinymce.models import HTMLField
+# 
+from autoslug import AutoSlugField
 
 # Create your models here.
 class Service(models.Model):
@@ -17,6 +19,7 @@ class Contact(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=100)
     description = HTMLField()
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, blank=True, default=None)
     
 
 # python manage.py startup service
