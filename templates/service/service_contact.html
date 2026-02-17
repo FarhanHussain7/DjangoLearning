@@ -88,12 +88,12 @@
         <input type="text" name="servicename" placeholder="Search services..." value="{{ request.GET.servicename }}">
         <button type="submit">Search</button>
     </form> -->
-
+    <a href="{% url 'contact_create' %}" class="btn">Create contact</a>
     {% for contact in contactData %}
         <div class="service">
             <h3>{{ contact.name }}</h3>
             <p>{{ contact.email }}</p>
-            <p><strong>Phone: {{ contact.phone }}</strong></p>
+            <p><strong>Message: {{ contact.message }}</strong></p>
             <!-- <a href="{% url 'service_detail' contact.pk %}" class="btn">View Details</a> -->
         </div>
     {% empty %}

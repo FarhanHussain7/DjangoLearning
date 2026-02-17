@@ -6,4 +6,5 @@ urlpatterns = [
     path('create/', views.service_create, name='service_create'),
     path('<int:pk>/', views.service_detail, name='service_detail'),
     path('contact/', views.service_contact, name='service_contact'),
+    path('contact/create/', views.contact_create, name='contact_create'),
 ]

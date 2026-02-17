@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Service</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        textarea { height: 100px; }
+        .btn { background: #007cba; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
+        .btn-secondary { background: #6c757d; }
+    </style>
+</head>
+<body>
+    <h1>Create New Contact</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Contact Name:</label>
+            <input type="text" name="name" id="{{ form.name.id_for_label }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            <input type="email" name="email" id="{{ form.email.id_for_label }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">Message:</label>
+            <textarea name="message" id="{{ form.message.id_for_label }}" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn">Create Contact</button>
+        <a href="{% url 'service_contact' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</body>
+</html>

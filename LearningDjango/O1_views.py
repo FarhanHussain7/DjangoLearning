@@ -152,7 +152,7 @@ def Contact(request):
             print("Message:", message)
             print("Number 1:", number1)
             print("Number 2:", number2)
-            
+             
             # Add the numbers
             try:
                 num1 = int(number1)

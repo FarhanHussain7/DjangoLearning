@@ -36,3 +36,14 @@ def service_contact(request):
         # 'paginate': paginate
     }   
     return render(request, 'service/service_contact.html', context)
+
+def contact_create(request):
+    if request.method == 'POST':
+            name=request.POST.get('name')
+            email=request.POST.get('email')
+            message=request.POST.get('message')
+            Contact.objects.create(name=name, email=email, message=message)
+            return redirect('service_contact')
+    else:
+        form = ServiceForm()
+    return render(request, 'service/contact_create.html', {'form': form})
