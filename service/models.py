@@ -15,12 +15,13 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField() 
+    contact_image = models.ImageField(upload_to='contact_images/', max_length=255, null=True, blank=True)
 
 class News(models.Model):
     title = models.CharField(max_length=100)
     description = HTMLField()
+    news_image = models.ImageField(upload_to='news_images/',max_length=255, null=True, blank=True)
     slug = AutoSlugField(populate_from='title', unique=True, null=True, blank=True, default=None)
-    
 
 # python manage.py startup service
 # python manage.py makemigrations

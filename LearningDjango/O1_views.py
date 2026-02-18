@@ -505,3 +505,33 @@ def NewsList(request, slug):
         'NewsData': NewsData
     }
     return render(request, 'service/news_details.html', context)
+
+
+def Email(request):
+    """
+    This function demonstrates sending an email using Django's email functionality.
+    It sends a test email to a specified recipient.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: A response indicating whether the email was sent successfully or if there was an error.
+    """
+    from django.core.mail import send_mail
+    from django.conf import settings
+    
+    subject = "Test Email from Django"
+    message = "This is a test email sent from a Django view."
+    from_email = settings.EMAIL_HOST_USER
+    recipient_list = ['fh4456200@gmail.com']   
+    try:
+        send_mail(
+            subject, 
+            message, 
+            from_email, 
+            recipient_list)
+        return HttpResponse("Email sent successfully!")
+    except Exception as e:
+        return HttpResponse(f"Error sending email: {str(e)}")   
+    

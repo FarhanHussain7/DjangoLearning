@@ -94,6 +94,9 @@
             <h3>{{ contact.name }}</h3>
             <p>{{ contact.email }}</p>
             <p><strong>Message: {{ contact.message }}</strong></p>
+            {% if contact.contact_image %}
+            <img src="{{ contact.contact_image.url }}" alt="Contact Image" style="max-width: 100%; height: auto; margin-top: 15px; border-radius: 4px;">
+            {% endif %}
             <!-- <a href="{% url 'service_detail' contact.pk %}" class="btn">View Details</a> -->
         </div>
     {% empty %}
