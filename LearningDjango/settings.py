@@ -139,5 +139,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'farhanhussain81303@gmail.com'
-EMAIL_HOST_PASSWORD = 'vkzn cuhg wpvw sqvv'  # App password for Gmail
+EMAIL_HOST_PASSWORD =   # App password for Gmail
 DEFAULT_FROM_EMAIL = 'farhanhussain81303@gmail.com'
