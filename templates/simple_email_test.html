@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Email Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .note {
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Simple Email Test</h1>
+        
+        <div class="note">
+            <strong>Note:</strong> This will send a simple test email to fh4456200@gmail.com
+        </div>
+        
+        <form method="POST" action="/send-email/">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="name">Name (optional):</label>
+                <input type="text" id="name" name="name" style="width: 100%; padding: 8px;">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email (optional):</label>
+                <input type="email" id="email" name="email" style="width: 100%; padding: 8px;">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message (optional):</label>
+                <textarea id="message" name="message" rows="4" style="width: 100%; padding: 8px;"></textarea>
+            </div>
+            
+            <input type="submit" value="🚀 Send Test Email">
+        </form>
+        
+        <p style="text-align: center; margin-top: 20px;">
+            <a href="/" style="color: #007bff; text-decoration: none;">← Back to Home</a>
+        </p>
+    </div>
+</body>
+</html>

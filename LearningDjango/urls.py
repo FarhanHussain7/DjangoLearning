@@ -46,9 +46,10 @@ urlpatterns = [
     path('validation/', O1_views.FormValidation, name="validation"),
     path('service-pages/', O1_views.ServicePages, name="service_pages"),
     path('filters/', O1_views.FilterExample, name="filters"),
-    path('news/<slug:slug>/', O1_views.NewsList, name="news_list"),
+    path('send-email/', O1_views.send_email, name="send_email"),
+    path('email-test/', O1_views.simple_email_test, name="email_test"),
 ]
-
+        
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

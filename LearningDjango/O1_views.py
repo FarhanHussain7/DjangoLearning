@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import usersForm
 from service.models import Service, Contact, News
+from .utils import send_contact_email
 
 # Display a simple welcome message for the About Us page
 def aboutUs(request):
@@ -535,3 +536,80 @@ def Email(request):
     except Exception as e:
         return HttpResponse(f"Error sending email: {str(e)}")   
     
+
+def EmailTemplate(request):
+    """
+    This function demonstrates sending an email using a Django template for the email body.
+    It renders an HTML template and sends it as the email content.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: A response indicating whether the email was sent successfully or if there was an error.
+    """
+    from django.core.mail import EmailMessage, send_mail, EmailMultiAlternatives
+    from django.template.loader import render_to_string
+    from django.conf import settings
+    
+    subject = "Test Email with Template from Django"
+    from_email = settings.EMAIL_HOST_USER
+    recipient_list = ['fh4456200@gmail.com']
+    # Render the email body using a template
+    email_body = render_to_string('email_template.html', {'username': 'John Doe'})  
+    email = EmailMessage(subject, email_body, from_email, recipient_list)
+    email.content_subtype = "html"  # Set content type to HTML  
+    try:
+        email.send()
+        return HttpResponse("Email with template sent successfully!")
+    except Exception as e:
+        return HttpResponse(f"Error sending email: {str(e)}")
+
+# Send email using contact form data
+def send_email(request):
+    """
+    This function sends an email using contact form data.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: Redirect to home page after sending email.
+    """
+    from django.shortcuts import redirect
+    from LearningDjango.utils import send_contact_email
+    
+    if request.method == 'POST':
+        try:
+            # Use the simple utility function
+            send_contact_email(request)
+            
+            # Return HTML with JavaScript popup alert
+            return HttpResponse("""
+                <script>
+                    alert('Email sent successfully! 📧');
+                    window.location.href = '/';
+                </script>
+            """)
+        except Exception as e:
+            return HttpResponse(f"""
+                <script>
+                    alert('Error sending email: {str(e)}');
+                    window.location.href = '/';
+                </script>
+            """)
+    
+    return redirect('/')
+
+# Simple email test form
+def simple_email_test(request):
+    """
+    This function renders a simple email test form.
+    
+    Parameters:
+    request (HttpRequest): The current HTTP request.
+    
+    Returns:
+    HttpResponse: The rendered email test form.
+    """
+    return render(request, 'simple_email_test.html')
